@@ -21,50 +21,7 @@ Quick summary of fixes
 | Missing validation | Bug | `addItem/removeItem/getQty` | Added type checks and value checks (raise TypeError/ValueError) |
 | Unprotected import-time execution | Maintainability | module top-level | Added `if __name__ == '__main__'` guard and proper logging configuration |
 
-How to reproduce analysis locally (Windows PowerShell)
-1. Install the analyzers using the Python launcher `py` (recommended on Windows):
-
-```powershell
-cd "C:\Users\jayan\Downloads\SE lab 5"
-py -m pip install --user pylint bandit flake8
-```
-
-2. Run the analyzers against the cleaned file and save outputs:
-
-```powershell
-py -m pylint inventory_system_clean.py > pylint_report_clean.txt
-py -m bandit -r inventory_system_clean.py > bandit_report_clean.txt
-py -m flake8 inventory_system_clean.py > flake8_report_clean.txt
-```
-
-3. (Optional) Run the analyzers against the original file for comparison:
-
-```powershell
-py -m pylint inventory_system.py > pylint_report_original.txt
-py -m bandit -r inventory_system.py > bandit_report_original.txt
-py -m flake8 inventory_system.py > flake8_report_original.txt
-```
-
-Running the program
-
-```powershell
-py inventory_system_clean.py
-```
-
-Notes and recommendations
-- I recommend using the cleaned file `inventory_system_clean.py` as the canonical, safe example for the lab. If you'd prefer the fixes to be applied inline to `inventory_system.py`, a backup copy can be created first (`inventory_system_original.py`) and the original overwritten.
-- To integrate these tools into your CI pipeline, consider adding a GitHub Actions workflow that runs the three tools on push/PR and fails the job if severity thresholds are exceeded.
-
-Where to find the deliverables in this repo
-- `issues_report.md` — issue table and descriptions
-- `reflection.md` — written reflections (answers to the lab questions)
-- `inventory_system_clean.py` — cleaned code
-- `pylint_report_clean.txt`, `bandit_report_clean.txt`, `flake8_report_clean.txt` — static analysis outputs (clean file)
-
-If you'd like I can:
-- Apply the cleaned code into `inventory_system.py` directly (overwrite or create a branch & PR)
-- Add a small GitHub Actions workflow to run the analyzers automatically on push/PR
-- Expand the `issues_report.md` table with original-file line numbers and tool-specific error codes
+<!-- Reproduction instructions and notes removed as requested. -->
 
 ---
 
